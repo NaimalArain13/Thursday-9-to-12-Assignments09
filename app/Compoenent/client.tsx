@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import DynamicCard from "./clientCard";
 import Loader from "./loader";
+import Link from "next/link";
 
 export interface ClientDataType {
   id: number;
@@ -33,7 +34,6 @@ export default function ClientComponent() {
     };
     fetchData();
   }, []); // Empty dependency array ensures useEffect runs only once
-
   
   if(loading) return (<div>
     <Loader />
@@ -44,9 +44,9 @@ export default function ClientComponent() {
         <h1 className=" text-xl md:text-3xl font-bold md:font-extrabold py-4 bg-gradient-to-t from-lime-300 to-purple-700 leading-snug bg-clip-text text-transparent">CLIENT SIDE DATA FETCHING</h1>
       <div className="grid grid-cols sm:grid-cols-2 md:grid-cols-3 gap-5 md:px-6">
         {products.map((product, index) => (
-          
+          <Link key={index} href={`/client/${product.id}`}>
           <DynamicCard data={product} key={index} />
-          
+          </Link>
         ))}
       </div>
     </div>

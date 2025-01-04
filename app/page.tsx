@@ -19,7 +19,7 @@ export default function Home() {
       <CardContent className="flex flex-col">
        
           <div className="flex flex-col md:flex-row justify-center items-center gap-3">
-            <Link href={"/client-data-fetch"}>
+            <Link href={"/client"}>
             <CustomButton
               button="Client-Side Data Fetching"
             /></Link>

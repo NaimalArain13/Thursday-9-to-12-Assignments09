@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { ClientDataType } from './client';
-import Link from 'next/link';
 
 
 
@@ -12,7 +11,7 @@ interface CardProps {
 const DynamicCard= ({ data }:CardProps) => {
   return (
     <div className="bg-white card max-w-md border rounded-lg shadow-md overflow-hidden">
-      <Link href={`/client-side-fetch/${data.id}`}>
+     
       <Image
         src={data.image}
         alt={data.title}
@@ -33,7 +32,7 @@ const DynamicCard= ({ data }:CardProps) => {
           Buy Now
         </button>
       </div>
-      </Link>
+      
     </div>
   );
 };
