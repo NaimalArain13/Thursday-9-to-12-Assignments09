@@ -42,7 +42,7 @@ export default function ClientComponent() {
 
     <div className="min-h-screen container flex flex-col items-center justify-center w-full mx-auto p-4">
         <h1 className=" text-xl md:text-3xl font-bold md:font-extrabold py-4 bg-gradient-to-t from-lime-300 to-purple-700 leading-snug bg-clip-text text-transparent">CLIENT SIDE DATA FETCHING</h1>
-      <div className="grid grid-cols lg:grid-cols-3 gap-5 lg:px-6">
+      <div className="grid grid-cols sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:px-6">
         {products.map((product, index) => (
           <Link key={index} href={`/client/${product.id}`}>
           <DynamicCard data={product} key={index} />

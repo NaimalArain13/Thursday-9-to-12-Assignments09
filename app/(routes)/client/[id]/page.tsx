@@ -112,8 +112,8 @@ function DynamicProductPage({ params }: { params: { id: string } }) {
   return (
     <div className="max-w-5xl mx-auto p-4">
       {/* Product Details Section */}
-      <button onClick={handleBack}>
-        <FaBackward />
+      <button onClick={handleBack} className="p-3">
+        <FaBackward size={30}/>
       </button>
       <div className="grid md:grid-cols-2 gap-8">
         {/* Product Image */}
