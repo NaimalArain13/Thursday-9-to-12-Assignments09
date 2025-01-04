@@ -60,15 +60,18 @@ import { ClientDataType } from "@/app/Compoenent/client";
 import Popup from "@/app/Compoenent/popup";
 import { Loader } from "lucide-react";
 import Image from "next/image";
+import { FaBackward } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 function DynamicProductPage({ params }: { params: { id: string } }) {
   const [loading, setLoading] = useState(false);
   const [isPopUpVisible , setIsPopUpVisible] = useState(false)
-  const handleCart = ()=>{
+  const handleCart:()=>void = ()=>{
     setIsPopUpVisible(true)
   }
   const [product, setProduct] = useState<ClientDataType>();
+  const router = useRouter()
   const parseID = parseInt(params.id, 10);
 
   useEffect(() => {
@@ -89,6 +92,8 @@ function DynamicProductPage({ params }: { params: { id: string } }) {
     fetchData();
   }, [parseID]);
 
+  const handleBack = ()=>{router.back()}
+
   if (loading)
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -107,6 +112,9 @@ function DynamicProductPage({ params }: { params: { id: string } }) {
   return (
     <div className="max-w-5xl mx-auto p-4">
       {/* Product Details Section */}
+      <button onClick={handleBack}>
+        <FaBackward />
+      </button>
       <div className="grid md:grid-cols-2 gap-8">
         {/* Product Image */}
         <div className="flex flex-col gap-4">
@@ -168,46 +176,6 @@ function DynamicProductPage({ params }: { params: { id: string } }) {
           )}
         </div>
       </div>
-
-      {/* Suggested Products Section */}
-      {/* <div className="mt-16">
-        <h2 className="text-xl font-semibold mb-4">Goods for You</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-gray-50 p-4 rounded-lg shadow-lg">
-            <Image
-              src="/images/product1.jpg" // Replace with your product images
-              alt="Brown Travel Bag"
-              width={150}
-              height={150}
-              className="mx-auto"
-            />
-            <p className="text-center mt-2 font-semibold">Brown Travel Bag</p>
-            <p className="text-center text-gray-600">$80</p>
-          </div>
-          <div className="bg-gray-50 p-4 rounded-lg shadow-lg">
-            <Image
-              src="/images/product2.jpg" // Replace with your product images
-              alt="Gray Backpack"
-              width={150}
-              height={150}
-              className="mx-auto"
-            />
-            <p className="text-center mt-2 font-semibold">Gray Backpack</p>
-            <p className="text-center text-gray-600">$120</p>
-          </div>
-          <div className="bg-gray-50 p-4 rounded-lg shadow-lg">
-            <Image
-              src="/images/product3.jpg" // Replace with your product images
-              alt="Black Backpack"
-              width={150}
-              height={150}
-              className="mx-auto"
-            />
-            <p className="text-center mt-2 font-semibold">Black Backpack</p>
-            <p className="text-center text-gray-600">$95</p>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }
