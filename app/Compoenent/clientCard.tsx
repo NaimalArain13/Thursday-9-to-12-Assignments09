@@ -15,9 +15,9 @@ const DynamicCard= ({ data }:CardProps) => {
       <Image
         src={data.image}
         alt={data.title}
-        width={448}
-        height={192}
-        className="w-full h-48 object-cover"
+        width={200}
+        height={150}
+        className="rounded"
       />
       <div className="p-4">
         <h2 className="text-xl font-bold mb-2">{data.title.slice(0,50)}</h2>
